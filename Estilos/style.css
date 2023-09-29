@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("../Media/3.png");
+    background-size: cover;
+}
+div{
+    position: relative;
+    width: 80px; /*esto es para separacion*/
+    margin-left: 180px; /*esto es para ponerlo en la izquierda*/
+    margin-top: 135px;
+    transition: all .5s ease;
+    display: inline-block;
+}
+/*lo que hace aca toma el primer elemnto osea img*/
+
+div img:first-child{
+    width: 200px; /*esto lo achica*/
+    box-sizing: 10px 20px 10px -10px black;
+    object-fit: cover;
+    border-radius:20px;
+}
+/*esto la img de la carpeta imagenes*/
+div img:last-child{
+    opacity: 0;
+    width: 200px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: all .3s ease;
+    transform: translateY(20%); /*esto es como el eje y y x por lo cual nosotros le indicamos  donde va a ir para que se vea mas 3D*/
+    margin: auto;
+}
+
+div:hover{
+    transform:
+    /*va a emparejar con la rotacion en cuanto a parametros 3D*/
+    perspective(350px)
+    rotateX(6deg)
+    translateZ(0)
+    /*giro la imagen hacia atras*/
+    translateY(-5%);
+}
+
+div::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 290%;
+    height: 100%;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 10% rgba(48, 48, 48, 0.464)
+        rgb(33, 33, 33)98%);
+        opacity: 0;
+        transition: all .3s ease;
+        backdrop-filter: blur(2px);
+}
+div:hover::before{
+    opacity: 1;
+}
+
+div:hover img:last-child{
+    opacity: 1;
+}
